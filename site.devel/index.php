@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    
     $admin_email = "vladino99@yandex.ru";
     $admin_message = "Имя: " . $first_name . "\n" . "Фамилия: " . $last_name . "\n" . "Email: " . $email . "\n" . "Пол: " . $gender . "\n" . "Город: " . $select_city . "\n" . "Сообщение: " . $user_message;
-   // mail($admin_email, "Обратная связь с сайта", $admin_message);
+    mail($admin_email, "Обратная связь с сайта", $admin_message);
     
     
 }
