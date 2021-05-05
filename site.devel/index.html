@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="lib/css/bootstrap.min.css">
 	<title>Обратная связь</title>
 </head>
 <body>
@@ -27,7 +27,7 @@
 		
 	  </nav>
 	<div class="container">
-  <form action="index.php" method="POST">
+  <form action="index.php" method="POST" enctype="multipart/form-data">
     
 	<div class="form-group row">
 		<label class="col-sm-2 col-form-label">Имя</label>
@@ -81,7 +81,7 @@
 		</div>
 		<div class="custom-file">
 		  <input type="file" class="custom-file-input" name="upload_file"
-			aria-describedby="inputGroupFileAddon01">
+			aria-describedby="inputGroupFileAddon01" id="upload_file">
 		  <label class="custom-file-label">Выберете файл</label>
 		</div>
 	</div>

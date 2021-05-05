@@ -17,13 +17,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $gender = $_REQUEST['gender'];
     $select_city = $_REQUEST['select_city'];
     $user_message = $_REQUEST['user_message'];
-
-    $mysqli->query("INSERT INTO users_messages (first_name, last_name, email, gender, city, user_message) VALUES ('$first_name', '$last_name', '$email', '$gender', '$select_city', '$user_message')");
+    $uploadname=basename($_FILES['upload_file']['name']);//записываем имя файла
+    $uploadpath='files/'; //указываем куда грузить файл
+    if (!empty($_FILES)) {
+        $target_dir = $uploadpath;
+        $target_file = $target_dir . basename($_FILES["upload_file"]["name"]);
+        
+        move_uploaded_file($_FILES["upload_file"]["tmp_name"], $target_file);
+        
+        }
+  
+    $mysqli->query("INSERT INTO users_messages (first_name, last_name, email, gender, city, user_message, upload_files) VALUES ('$first_name', '$last_name', '$email', '$gender', '$select_city', '$user_message', '$uploadname')");
     
    
     $admin_email = "vladino99@yandex.ru";
     $admin_message = "Имя: " . $first_name . "\n" . "Фамилия: " . $last_name . "\n" . "Email: " . $email . "\n" . "Пол: " . $gender . "\n" . "Город: " . $select_city . "\n" . "Сообщение: " . $user_message;
-    mail($admin_email, "Обратная связь с сайта", $admin_message);
+   // mail($admin_email, "Обратная связь с сайта", $admin_message);
     
     
 }
